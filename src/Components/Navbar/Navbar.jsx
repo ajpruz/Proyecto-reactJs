@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import Cart from '../cart/Cart'
 import Dropdown from './Dropdown'
 
 
@@ -24,17 +25,17 @@ const Navbar = () => {
     })
 
     return (
-        <>
-        <nav className='flex  justify-between items-center h-16 bg-transparent text-white relative shadow-md font-mono' 
+        <div className='my-2 sticky top-2 z-10'>
+        <nav className='flex rounded-full mx-2 justify-between items-center h-16 bg-gradient-to-r from-purple-500 to-indigo-600 text-white relative shadow-xl font-mono' 
         role='navigation'>
-           <Link to='/' className='pl-8'>
+           <Link to='/' className='pl-8 hover:text-black'>
             Kawaki
            </Link>
-           <form action="">
-               <input type="text" />
-               <button type='submit'>Buscar</button>
+           <form className='rounded' action="">
+               <input className='md:w-36 w-20 rounded-l focus:ring-2 focus:ring-blue-600' type="text" />
+               <button className='bg-indigo-600 hover:bg-indigo-300 hover:text-black rounded-r' type='submit'>Buscar</button>
            </form>
-           <div className='px-4 cursor-pointer md:hidden'
+           <div className='px-4 cursor-pointer hover:text-black md:hidden'
            onClick={toggle}>
            <svg className="w-6 h-6" 
                 fill="none" 
@@ -49,23 +50,26 @@ const Navbar = () => {
             />
             </svg>
             </div>
-            <div className='pr-8 md:block hidden'>
-                <Link className='p-4' to='/'>
+            <div className='md:inline-flex items-center pr-9 hidden '>
+                <Link className='p-4 hover:text-black' to='/'>
                     Home
                 </Link>
-                <Link className='p-4' to='/menu'>
+                <Link className='p-4 hover:text-black' to='/menu'>
                     Menu
                 </Link>
-                <Link className='p-4' to='/about'>
+                <Link className='p-4 hover:text-black' to='/about'>
                     About
                 </Link>
-                <Link className='p-4' to='/contact'>
+                <Link className='p-4 hover:text-black' to='/contact'>
                     Contact
                 </Link>
+                <Cart/>
             </div>
         </nav>
-        <Dropdown isOpen={isOpen} toggle={toggle}/>
-        </>
+        <div className='flex justify-center'>
+            <Dropdown isOpen={isOpen} toggle={toggle}/>
+        </div>
+        </div>
     )
 }
 

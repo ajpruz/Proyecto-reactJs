@@ -1,24 +1,35 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 
 
 
 
-const Button = () => {
+const Button = ({stock}) => {
 
-    const click = (e) => {
+/*     const click = (e) => {
         e.preventDefault()
         setTimeout(() => {
             alert("DIOS MIO!!!")
         }, 1000);
+    } */
+    const [cantidad, setCantidad] = useState(0)
+
+    function add() {
+        if (cantidad < stock) setCantidad(cantidad + 1)
+    }
+    function remove() {
+        if (cantidad >= 1) setCantidad(cantidad - 1)
     }
 
     return (
-        <div>
-            <Link onClick={click} className='py-6 px-10 bg-red-600 rounded-full text-3xl hover:bg-red-500 transition duration-300 ease-in-out flex items-center ' to='/'>
-                Order Now
-            <svg className="w-6 h-6 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-            </Link>
+        <div className='my-1'>
+            <div className='flex p-4 font-bold font-sans text-sm m-4 bg-transparent rounded-full hover:bg-indigo-600 bg-opacity-25 transform items-center justify-center gap-8'>
+                <button className='border-none bg-indigo-500 shadow-xl text-inherit rounded-full h-8 w-8 cursor-pointer outline-none transition-colors duration-200-ease-out transform duration-50-ease-out hover:bg-red-700 ' onClick={()=>remove()} > - </button>
+                <span className='text-md text-white'>{cantidad}</span>
+                <button className='border-none bg-indigo-500 shadow-xl text-inherit rounded-full h-8 w-8 cursor-pointer outline-none transition-colors duration-200-ease-out transform duration-50-ease-out hover:bg-green-700 'onClick={()=>add()} > + </button>
+            </div>
+            <div className='flex justify-center h-9'>
+                <button className='w-max rounded-md items-center  bg-indigo-500 shadow-xl cursor-pointer outline-none transition-colors hover:bg-indigo-300 hover:text-black px-4' >Add Cart</button>
+            </div>
         </div>
     )
 }
