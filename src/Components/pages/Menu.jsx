@@ -3,9 +3,9 @@ import ContainerItems from '../ContainerItems/ContainerItems'
 
 const Menu = () => {
     return (
-        <div>
+        <>
             <ContainerItems/>
-        </div>
+        </> 
     )
 }
 

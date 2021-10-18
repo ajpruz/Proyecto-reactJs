@@ -9,7 +9,7 @@ const DetailPage = () => {
 
     return (
         <div>
-            <ItemDetailContainer id={id}/>      
+            <ItemDetailContainer paramsId={id}/>      
         </div>
     )
 }

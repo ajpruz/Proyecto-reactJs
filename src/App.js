@@ -13,10 +13,10 @@ import Menu from './Components/pages/Menu';
 function App() {
   return (
     <>
-      <FirstContext.Provider value=''>
+      <FirstContext.Provider value=''> 
         <Navbar/>
           <Switch>
-            <Route  path='/menu/:id' component={DetailPage} />
+            <Route path='/menu/:id' component={DetailPage} />
             <Route path='/' exact component={Home} />
             <Route exact path='/menu' component={Menu} />
             <Route path='/about' exact component={About} />

@@ -4,7 +4,7 @@ import Cart from '../cart/Cart'
 
 const Dropdown = ({isOpen, toggle}) => {
     return (
-        <div className={isOpen ? "grid w-4/5 pb-3 shadow-xl justify-center grid-rows-4 text-center items-center bg-gradient-to-r from-purple-500 to-indigo-600 " : "hidden"}
+        <div className={isOpen ? "grid w-4/5 pb-3 rounded-b shadow-xl justify-center grid-rows-4 text-center items-center bg-gradient-to-r from-purple-500 to-indigo-600 " : "hidden"}
         onClick={toggle}
         >
             <Link className='p-4 hover:text-white' to='/'>
@@ -19,7 +19,9 @@ const Dropdown = ({isOpen, toggle}) => {
             <Link className='p-4 hover:text-white' to='/contact'>
                 Contact
             </Link>
-            <Cart />
+            <Link className=' hover:text-white' to='/'>
+                <Cart/>
+            </Link>
         </div>
     )
 }

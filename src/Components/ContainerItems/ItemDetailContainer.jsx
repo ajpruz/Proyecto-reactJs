@@ -3,14 +3,14 @@ import { api } from '../../helpers/api'
 import DetailItems from '../Item/DetailItems'
 import Spinner from '../Spinner/Spinner'
 
-const ItemDetailContainer = ({id}) => {
-    const [Detail, setDetail] = useState([])
+const ItemDetailContainer = ({paramsId}) => {
+    const [detail, setDetail] = useState([])
     const [loading, setLoading] = useState(true)
 
     
 
     useEffect(() =>{
-        const urlDetails = `${id}`
+        const urlDetails = `${paramsId}`
         api.get(urlDetails)
         .then(resp => {
             setDetail(resp.data)
@@ -28,7 +28,7 @@ const ItemDetailContainer = ({id}) => {
                 ?
                 <Spinner/>
                 :
-                <DetailItems key={id} obj={Detail} />
+                <DetailItems paramsId={paramsId} obj={detail} />
             }
             
         </div>

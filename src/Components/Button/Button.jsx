@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 
 
-const Button = ({stock}) => {
+const Button = ({Stock}) => {
 
 /*     const click = (e) => {
         e.preventDefault()
@@ -14,12 +14,12 @@ const Button = ({stock}) => {
     const [cantidad, setCantidad] = useState(0)
 
     function add() {
-        if (cantidad < stock) setCantidad(cantidad + 1)
+        if (cantidad < Stock) setCantidad(cantidad + 1)
     }
     function remove() {
         if (cantidad >= 1) setCantidad(cantidad - 1)
     }
-
+    console.log(cantidad)
     return (
         <div className='my-1'>
             <div className='flex p-4 font-bold font-sans text-sm m-4 bg-transparent rounded-full hover:bg-indigo-600 bg-opacity-25 transform items-center justify-center gap-8'>

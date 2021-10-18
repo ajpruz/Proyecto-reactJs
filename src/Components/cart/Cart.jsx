@@ -6,7 +6,7 @@ const Cart = () => {
 
     return (<div>
                 <svg 
-                    className="w-6 h-6 ml-8 justify-self hover:text-white" 
+                    className="w-6 h-6 justify-self" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24" 

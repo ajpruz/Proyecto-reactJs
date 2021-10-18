@@ -1,11 +1,11 @@
 import React from 'react'
 
-const DetailItems = ({ key, obj }) => {
+const DetailItems = ({ paramsId, obj }) => {
 
     const {title, price, category, description, image} = obj
 
     return (
-        <div id={key} >
+        <div id={paramsId} >
             <h2> PRODUCTO  {title}</h2>
             <img 
             className=
