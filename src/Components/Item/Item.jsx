@@ -1,11 +1,9 @@
 import React from 'react';
-import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 
 function Item({ mire }) {
 
     const { title, id, image, price, rating } = mire;
-    console.log(mire)
 
     return (
         <div className='container p-4 sm:w-1/2 lg:w-1/3'>
@@ -19,7 +17,9 @@ function Item({ mire }) {
                     <p className='text-2xl font-semibold mb-3'>Price: {price}</p>
                     <p>Stock:{rating.count}</p>
                     <div className='flex items-center justify-center'>
-                        <Button Stock={rating.count} />
+                        <Link to={`/menu/${id}`}>
+                        <button className='w-max rounded-md items-center  bg-indigo-500 shadow-xl cursor-pointer outline-none transition-colors hover:bg-indigo-300 hover:text-black px-4'>COMPRAR</button>
+                        </Link>
                     </div>
                 </div>
             </div>

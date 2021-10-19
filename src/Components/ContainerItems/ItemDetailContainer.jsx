@@ -7,8 +7,6 @@ const ItemDetailContainer = ({paramsId}) => {
     const [detail, setDetail] = useState([])
     const [loading, setLoading] = useState(true)
 
-    
-
     useEffect(() =>{
         const urlDetails = `${paramsId}`
         api.get(urlDetails)
@@ -19,7 +17,7 @@ const ItemDetailContainer = ({paramsId}) => {
         setTimeout(() => {
         }, 2000);
     },[])
-
+    
 
     return (
         <div>
