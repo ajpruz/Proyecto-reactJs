@@ -1,11 +1,11 @@
-import React from 'react'
+import {React} from 'react'
 import { useState } from 'react/cjs/react.development'
 import ItemCount from '../ItemCount/ItemCount'
 
 const DetailItems = ({ paramsId, obj }) => {
 
     const [carrito, setCarrito] = useState(0)
-    const {title, price, category, description, image, rating} = obj
+    const {name, price, category, description, urlimage, stock} = obj
 
     function Add(qty){
         setCarrito(carrito + qty)
@@ -14,19 +14,19 @@ const DetailItems = ({ paramsId, obj }) => {
     console.log(carrito)
     return (
         <div id={paramsId} >
-            <h2> PRODUCTO  {title}</h2>
+            <h2> PRODUCTO : {name}</h2>
             <img 
             className=
                 'lg:h72 md:h-48 w-full object-cover object-center  group-hover:opacity-60 ' 
-            src={image} 
+            src={urlimage} 
             alt="" 
             />
             <h3>{category}</h3>
             <p>{price}</p>
             <p>{description}</p>
-            <p>Stock: {rating.count}</p>
+            <p>Stock: {stock}</p>
             <div>
-                <ItemCount Add={Add} stock={rating.count} />
+                <ItemCount Add={Add} stock={stock} />
             </div>
         </div>
     )

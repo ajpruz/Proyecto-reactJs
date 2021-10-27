@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router';
 import './App.css';
-import { FirstContext } from './Components/Context/cartContext';
+import CartContextProvider from './Components/Context/cartContext';
 import Footer from './Components/Footer/Footer';
 import Navbar from './Components/Navbar/Navbar';
 import About from './Components/pages/About';
@@ -13,7 +13,7 @@ import Menu from './Components/pages/Menu';
 function App() {
   return (
     <>
-      <FirstContext.Provider value=''> 
+      <CartContextProvider> 
         <Navbar/>
           <Switch>
             <Route path='/menu/:id' component={DetailPage} />
@@ -23,7 +23,7 @@ function App() {
             <Route path='/contact' exact component={Contact} />
           </Switch>
         <Footer/>
-      </FirstContext.Provider>
+      </CartContextProvider>
     </>
   );
 }

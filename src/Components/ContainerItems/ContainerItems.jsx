@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { api } from '../../helpers/api'
+import { getFirestore } from '../../services/getFirebase'
 import Item from '../Item/Item'
 import SearchButton from '../SearchButton/SearchButton'
 import Spinner from '../Spinner/Spinner'
@@ -7,23 +8,30 @@ import Spinner from '../Spinner/Spinner'
 const ContainerItems = () => {
 
     const [Items, setItems] = useState([])
+/*     const [Item, setItem] = useState({}) */
     const [Loading, setLoading] = useState(true)
     const [Users, setUsers] = useState([])
     const [Search, setSearch] = useState([])
 
 
-    useEffect( async () => {
-       await api.get()
-        .then(resp => {
-            setItems(resp.data)
-            setUsers(resp.data)
-            setLoading(false)
-            console.log(Items)
-        })
-        setTimeout(() =>{
-        }, 2000)
-    }, [])
+    useEffect(() => {
+        const db = getFirestore()
+        db.collection('Items').get()
 
+            /*         db.collection('Items').doc('NwHH4V7HMk10ujdfWvGS').get()
+        .then(resp => setItem( {id: resp.id, ...resp.data()} )) */
+        .then(resp => {
+                setItems(resp.docs.map(it => ({id: it.id, ...it.data() })))
+                setItems(resp.docs.map(it => ({id: it.id, ...it.data() })))
+                setLoading(false)
+            })
+            setTimeout(() =>{
+            }, 2000)
+        },[])
+        console.log(Items)
+
+
+        
     return (
         <div>
             <div className='flex justify-center'>

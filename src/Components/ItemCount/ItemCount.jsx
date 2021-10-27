@@ -14,7 +14,6 @@ const ItemCount = ({ stock, Add }) => {
     function restar() {
         if (cantidad >= 1) setCantidad(cantidad - 1)
     }
-
     return (
         <div className='my-1'>
                 <div className='flex justify-center h-9'>
