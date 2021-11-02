@@ -1,17 +1,32 @@
 import {React} from 'react'
-import { useState } from 'react/cjs/react.development'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react/cjs/react.development'
+import { useCartContext } from '../Context/CartContext'
 import ItemCount from '../ItemCount/ItemCount'
 
 const DetailItems = ({ paramsId, obj }) => {
 
-    const [carrito, setCarrito] = useState(0)
-    const {name, price, category, description, urlimage, stock} = obj
+    const {name, price, category, description, urlimage, stock, id} = obj
+    const {products, testCart, addItem, removeFromCart, isInCart} = useCartContext();
+    const [agregado, setAgregado] = useState(false)
 
-    function Add(qty){
-        setCarrito(carrito + qty)
-        console.log(`Agregaste ${qty} items al carrito`)
+    function onAdd(qty){
+        setAgregado(true)
+        addItem({
+            id: id,
+            name: name,
+            category: category,
+            price: price,
+            description: description,
+            stock: stock,
+            urlimage: urlimage,
+            qty: qty
+        })
     }
-    console.log(carrito)
+    useEffect(() => {
+        testCart();
+    }, [products])
+    
     return (
         <div id={paramsId} >
             <h2> PRODUCTO : {name}</h2>
@@ -26,7 +41,20 @@ const DetailItems = ({ paramsId, obj }) => {
             <p>{description}</p>
             <p>Stock: {stock}</p>
             <div>
-                <ItemCount Add={Add} stock={stock} />
+                {!isInCart(id)?
+                <ItemCount Add={onAdd} stock={stock} initial={1} />
+                :
+                <div>
+                <button className='w-max rounded-md items-center  bg-indigo-500 shadow-xl cursor-pointer outline-none transition-colors hover:bg-indigo-400 hover:text-black px-4'>
+                    <Link to='/Cart'>
+                    Finalzar Compra
+                    </Link>
+                </button>
+                <button onClick={() => removeFromCart(id)} className='w-max rounded-md items-center  bg-red-500 shadow-xl cursor-pointer outline-none transition-colors hover:bg-red-400 hover:text-black px-4'>
+                    Eliminar Carrito
+                </button>
+                </div>
+                }        
             </div>
         </div>
     )

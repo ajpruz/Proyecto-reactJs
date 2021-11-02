@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { api } from '../../helpers/api'
 import { getFirestore } from '../../services/getFirebase'
 import Item from '../Item/Item'
 import SearchButton from '../SearchButton/SearchButton'
@@ -27,11 +26,7 @@ const ContainerItems = () => {
             })
             setTimeout(() =>{
             }, 2000)
-        },[])
-        console.log(Items)
-
-
-        
+        },[]) 
     return (
         <div>
             <div className='flex justify-center'>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { api } from '../../helpers/api'
 import { getFirestore } from '../../services/getFirebase'
 import DetailItems from '../Item/DetailItems'
 import Spinner from '../Spinner/Spinner'

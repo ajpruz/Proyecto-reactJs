@@ -3,15 +3,15 @@ import React, { useState } from 'react'
 
 
 
-const ItemCount = ({ stock, Add }) => {
+const ItemCount = ({ stock, Add, initial }) => {
     
-    const [cantidad, setCantidad] = useState(1)
+    const [cantidad, setCantidad] = useState(initial)
 
-    function sumar() {
+    function addCount() {
         if(cantidad < stock) setCantidad(cantidad + 1)
     }
 
-    function restar() {
+    function addRemove() {
         if (cantidad >= 1) setCantidad(cantidad - 1)
     }
     return (
@@ -21,9 +21,9 @@ const ItemCount = ({ stock, Add }) => {
                 </div>
 
                 <div className='flex p-4 font-bold font-sans text-sm m-4 bg-transparent rounded-full hover:bg-indigo-600 bg-opacity-25 transform items-center justify-center gap-8'>
-                    <button className='border-none bg-indigo-500 shadow-xl text-inherit rounded-full h-8 w-8 cursor-pointer outline-none transition-colors duration-200-ease-out transform duration-50-ease-out hover:bg-red-700 'onClick={()=>restar()} > - </button>
+                    <button className='border-none bg-indigo-500 shadow-xl text-inherit rounded-full h-8 w-8 cursor-pointer outline-none transition-colors duration-200-ease-out transform duration-50-ease-out hover:bg-red-700 'onClick={()=>addRemove()} > - </button>
                     <span className='text-md text-white'>{cantidad}</span>
-                    <button className='border-none bg-indigo-500 shadow-xl text-inherit rounded-full h-8 w-8 cursor-pointer outline-none transition-colors duration-200-ease-out transform duration-50-ease-out hover:bg-green-700 'onClick={()=>sumar()} > + </button>
+                    <button className='border-none bg-indigo-500 shadow-xl text-inherit rounded-full h-8 w-8 cursor-pointer outline-none transition-colors duration-200-ease-out transform duration-50-ease-out hover:bg-green-700 'onClick={()=>addCount()} > + </button>
                 </div> 
         </div>
     )
